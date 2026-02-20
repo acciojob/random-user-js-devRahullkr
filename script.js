@@ -5,3 +5,47 @@ let userName = document.getElementById("userName")
 let addintionalInfo = document.getElementById("additionalInfo")
 let getUser = document.getElementById("getUser")
 let infoButtons = document.getElementById("button[data-attr]")
+
+async function fetchUser(){
+	let res = await fetch("https://randomuser.me/api")
+	let data = await data.json()
+	currenctUser = data[0]
+
+	displayUser()
+}
+
+function displayUser(){
+	const {first,last} = currenctUser.name;
+	userName.textContent = `${first} ${last}`
+	userImage.src = currenctUser.picture.large;
+
+	addintionalInfo.textContent = ""
+}
+
+infoButtons.forEach((button) => {
+	button.addEventListener("click", () => {
+		if(!currenctUser)return;
+
+		const attr = button.dataSet.attr;
+		let value = ""
+
+		switch(attr){
+			case "age":
+				value = `Age: ${currenctUser.dob.age}`;
+				break;
+			case "email":
+				value = `Email: ${currenctUser.email}`;
+				break;
+			case "phone";
+				value = `Phone: ${currenctUser.phone}`;
+				break;
+		}
+
+		addintionalInfo.textContext = value;
+	})
+})
+
+getUser.addEventListener("click",fetchUser);
+
+fetchUser();
+
