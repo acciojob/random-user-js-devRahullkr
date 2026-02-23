@@ -1,4 +1,5 @@
 //your code here
+
 let currenctUser = null;
 let userImage = document.getElementById("userImage")
 let userName = document.getElementById("userName")
@@ -48,4 +49,11 @@ infoButtons.forEach((button) => {
 getUser.addEventListener("click",fetchUser);
 
 fetchUser();
+const { defineConfig } = require("cypress");
+
+module.exports = defineConfig({
+  e2e: {
+    chromeWebSecurity: false,
+  },
+});
 
