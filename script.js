@@ -43,6 +43,7 @@ infoButtons.forEach((button) => {
 		}
 
 		addintionalInfo.textContent = value;
+		
 	})
 })
 
