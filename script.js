@@ -8,7 +8,7 @@ let getUser = document.getElementById("getUser")
 let infoButtons = document.querySelectorAll("button[data-attr]")
 
 async function fetchUser(){
-	let res = await fetch("https://randomuser.me/api")
+	let res = await fetch("http://randomuser.me/api")
 	let data = await res.json()
 	currenctUser = data.results[0]
 
