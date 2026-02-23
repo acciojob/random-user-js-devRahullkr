@@ -7,12 +7,17 @@ let addintionalInfo = document.getElementById("additionalInfo")
 let getUser = document.getElementById("getUser")
 let infoButtons = document.querySelectorAll("button[data-attr]")
 
-async function fetchUser(){
-	let res = await fetch("http://randomuser.me/api")
-	let data = await res.json()
-	currenctUser = data.results[0]
+async function fetchUser() {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://randomuser.me/api/", true);
 
-	displayUser()
+  xhr.onload = function () {
+    const data = JSON.parse(xhr.responseText);
+    currenctUser = data.results[0];
+    displayUser();
+  };
+
+  xhr.send();
 }
 
 function displayUser(){
